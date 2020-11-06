@@ -28,7 +28,13 @@
 
 </ul>
 
-<a class="btn btn-warning" href="{{ path('meal_update_form', {id: meal.id}) }}">Modify meal</a>
-<a class="btn btn-secondary" href="{{ path('meal_list') }}">Back to list</a>
+<div class="d-flex">
+    <a class="btn btn-secondary" href="{{ path('meal_list') }}">Back to list</a>
+    <a class="btn btn-warning" href="{{ path('meal_update_form', {id: meal.id}) }}">Modify meal</a>
+
+    <form method="post" action="{{ path('meal_delete', {id: meal.id}) }}">
+        <button type="submit" class="btn btn-danger">Delete meal</button>
+    </form>
+</div>
 
 {% endblock %}

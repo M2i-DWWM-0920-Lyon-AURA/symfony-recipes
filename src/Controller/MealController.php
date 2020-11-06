@@ -107,4 +107,15 @@ class MealController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/{id}/delete", name="delete", requirements={"id"="\d+"}, methods={"POST"})
+     */
+    public function delete(Meal $meal, EntityManagerInterface $manager)
+    {
+        $manager->remove($meal);
+        $manager->flush();
+
+        return $this->redirectToRoute('meal_list');
+    }
 }
