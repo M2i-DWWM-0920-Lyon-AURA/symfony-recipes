@@ -3,10 +3,10 @@
 {% block title %}Hello MealController!{% endblock %}
 
 {% block body %}
-<ul>
+<ul class="list-group list-unstyled">
 
     {% for meal in meals %}
-        <li>
+        <li class="list-group-item">
             <a href="{{ path("meal_single", {id: meal.id}) }}">
                 {{ meal.name }}
             </a>
@@ -14,4 +14,5 @@
     {% endfor %}
 
 </ul>
+
 {% endblock %}
