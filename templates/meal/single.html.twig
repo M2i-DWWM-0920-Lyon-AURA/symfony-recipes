@@ -28,6 +28,7 @@
 
 </ul>
 
-<a href="{{ path('meal_list') }}">Back</a>
+<a class="btn btn-warning" href="{{ path('meal_update_form', {id: meal.id}) }}">Modify meal</a>
+<a class="btn btn-secondary" href="{{ path('meal_list') }}">Back to list</a>
 
 {% endblock %}

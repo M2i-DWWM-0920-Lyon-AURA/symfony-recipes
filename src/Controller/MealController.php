@@ -73,4 +73,38 @@ class MealController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/{id}/update", name="update_form", methods={"GET"}, requirements={"id"="\d+"})
+     */
+    public function updateForm(Meal $meal): Response
+    {
+        $form = $this->createForm(MealType::class, $meal);
+
+        return $this->render('meal/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/update", name="update", methods={"POST"}, requirements={"id"="\d+"})
+     */
+    public function update(Meal $meal, Request $request, EntityManagerInterface $manager): Response
+    {
+        $form = $this->createForm(MealType::class, $meal);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $meal = $form->getData();
+    
+            $manager->persist($meal);
+            $manager->flush();
+
+            return $this->redirectToRoute('meal_list');
+        }
+
+        return $this->render('meal/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }
