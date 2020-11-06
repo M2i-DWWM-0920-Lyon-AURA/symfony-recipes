@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MealController!{% endblock %}
+
+{% block body %}
+<ul>
+
+    {% for meal in meals %}
+        <li>
+            <a href="{{ path("meal_single", {id: meal.id}) }}">
+                {{ meal.name }}
+            </a>
+        </li>
+    {% endfor %}
+
+</ul>
+{% endblock %}
