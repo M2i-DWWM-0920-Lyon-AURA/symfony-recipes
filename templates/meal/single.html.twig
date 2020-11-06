@@ -4,5 +4,30 @@
 
 {% block body %}
 <h1>{{ meal.name }}</h1>
+<img class="img-fluid" src="{{ meal.image }}" alt="Picture of {{ meal.name }}" />
+
+<h2>Ingredients:</h2>
+<ul>
+
+    {% for ingredient in meal.ingredients %}
+    <li>
+        {{ ingredient.name }} ({{ ingredient.measure }})
+    </li>
+    {% endfor %}
+
+</ul>
+
+<h2>Instructions:</h2>
+<ul>
+
+    {% for instruction in meal.instructions %}
+    <li>
+        {{ instruction.description }}
+    </li>
+    {% endfor %}
+
+</ul>
+
 <a href="{{ path('meal_list') }}">Back</a>
+
 {% endblock %}
