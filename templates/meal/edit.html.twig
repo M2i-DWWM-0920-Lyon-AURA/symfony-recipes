@@ -4,4 +4,22 @@
 
 {% block body %}
     {{ form(form) }}
+
+    {% if meal.id %}
+        <ul class="list-group list-unstyled">
+
+            {% for instruction in meal.instructions %}
+                <li class="list-group-item d-flex">
+                    <div class="mr-auto">
+                        <strong>Step {{ instruction.instructionRank }} -</strong> {{ instruction.description }}
+                    </div>
+
+                    <form method="post" action="{{ path('instruction_delete', {id: instruction.id}) }}">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+
+        </ul>
+    {% endif %}
 {% endblock %}

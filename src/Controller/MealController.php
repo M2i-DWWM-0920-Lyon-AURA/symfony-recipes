@@ -83,6 +83,7 @@ class MealController extends AbstractController
 
         return $this->render('meal/edit.html.twig', [
             'form' => $form->createView(),
+            'meal' => $meal,
         ]);
     }
 
